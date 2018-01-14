@@ -18,11 +18,19 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from django19.api import WhateverResource
+from django19.api import UsersResource
+from django19.api import CompanyResource
+from django19.api import CompanyJobsResource
+from django19.api import JobsAppliedResource
 
-whatever_resource = WhateverResource()
-
+company_resource = CompanyResource()
+company_jobs_resource = CompanyJobsResource()
+users_resource = UsersResource()
+jobs_applied_resource = JobsAppliedResource()
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(whatever_resource.urls)),
+    url(r'^api/', include(company_resource.urls)),
+    url(r'^api/', include(company_jobs_resource.urls)),
+    url(r'^api/', include(users_resource.urls)),
+    url(r'^api/', include(jobs_applied_resource.urls)),
 ]
